@@ -11,14 +11,14 @@ export function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
       {/* Status Bar */}
       <div className="status-bar">
         <div className="flex items-center gap-1">
-          <Volume2 className="w-4 h-4" />
+          <Volume2 className="w-4 h-4" />  {/* This represents the device's Sound/Volume status*/}
         </div>
         <div className="flex items-center gap-1">
-          <MoreVertical className="w-4 h-4" />
+          <MoreVertical className="w-4 h-4" />   {*/ keybab menu  three dots Emergency Help, About, or Advanced Settings*/}
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* Main Content  currently app logo and name not present */}
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)] px-8 text-center">
         {/* App Icon/Logo */}
         <div className="w-24 h-24 bg-gradient-to-br from-app-teal to-app-cyan rounded-3xl flex items-center justify-center mb-8 animate-pulse">
@@ -33,7 +33,8 @@ export function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
         <h2 className="text-xl font-light text-app-cyan mb-12 opacity-80">
           Connect. Chat. Share.
         </h2>
-
+        
+        {/* terms and condition*/}
         <div className="text-sm text-app-gray mb-8 leading-relaxed max-w-xs">
           Read our{" "}
           <button className="text-app-teal underline hover:text-app-cyan transition-colors">
@@ -53,7 +54,7 @@ export function WelcomeScreen({ onContinue }: WelcomeScreenProps) {
           <div className="w-2 h-2 rounded-full bg-app-teal ml-2"></div>
         </button>
 
-        {/* Continue Button */}
+        {/* Continue Button  Navigate to login screen*/}
         <Button
           onClick={onContinue}
           className="w-full bg-gradient-to-r from-app-teal to-app-cyan hover:from-app-teal/90 hover:to-app-cyan/90 text-white font-medium py-4 rounded-full text-base shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
