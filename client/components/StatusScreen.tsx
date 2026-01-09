@@ -52,24 +52,24 @@ export function StatusScreen({
   onNext,
   onPrevious,
 }: StatusScreenProps) {
-  const [currentIndex, setCurrentIndex] = useState(statusIndex);
-  const [progress, setProgress] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(statusIndex);  {/* status of the current index*/}
+  const [progress, setProgress] = useState(0);   {/* progress bar*/}
+  const [isPaused, setIsPaused] = useState(false); {/* is the current statuus paused or palying*/}
   const [isMuted, setIsMuted] = useState(false);
   const [showReply, setShowReply] = useState(false);
-  const [replyText, setReplyText] = useState("");
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [replyText, setReplyText] = useState("");  {/* handles user's reply*/}
+  const videoRef = useRef<HTMLVideoElement>(null);      {/* it is used to control the video element*/}
 
-  const currentStatus = contact?.statuses[currentIndex];
+  const currentStatus = contact?.statuses[currentIndex]; 
 
-  useEffect(() => {
+  useEffect(() => {                          {*/ handling status changes*/}
     if (!currentStatus || isPaused) return;
 
     const duration = currentStatus.duration * 1000;
     const interval = 50;
     const increment = (interval / duration) * 100;
 
-    const timer = setInterval(() => {
+    const timer = setInterval(() => {    {/* To automatically fill the progress bar over time and move to the next status when it reaches 100%*/}
       setProgress((prev) => {
         if (prev >= 100) {
           handleNext();
@@ -94,7 +94,7 @@ export function StatusScreen({
   };
 
   const handlePrevious = () => {
-    if (currentIndex > 0) {
+    if (currentIndex > 0) {                    {/* moving to next previous element*/}
       setCurrentIndex(currentIndex - 1);
       setProgress(0);
     } else {
@@ -105,7 +105,7 @@ export function StatusScreen({
   const handlePauseToggle = () => {
     setIsPaused(!isPaused);
     if (currentStatus?.type === "video" && videoRef.current) {
-      if (isPaused) {
+      if (isPaused) {                   {/* paused → play, playing → pause*/}
         videoRef.current.play();
       } else {
         videoRef.current.pause();
