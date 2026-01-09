@@ -125,7 +125,7 @@ export function StatusScreen({
   if (!contact || !currentStatus) {
     return (
       <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
-        <p className="text-white">No status available</p>
+        <p className="text-white">No status available</p>    {/* // either no contact is selected or the selected contact has no status avaialable*/}
       </div>
     );
   }
