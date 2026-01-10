@@ -20,7 +20,7 @@ interface PrivacySettingsScreenProps {
 }
 
 export function PrivacySettingsScreen({ onBack }: PrivacySettingsScreenProps) {
-  const [lastSeenSetting, setLastSeenSetting] = useState<
+  const [lastSeenSetting, setLastSeenSetting] = useState<           {/* the last time a user was online or active*/}
     "everyone" | "contacts" | "nobody"
   >("everyone");
   const [profilePhotoSetting, setProfilePhotoSetting] = useState<
@@ -32,7 +32,7 @@ export function PrivacySettingsScreen({ onBack }: PrivacySettingsScreenProps) {
   const [statusSetting, setStatusSetting] = useState<
     "everyone" | "contacts" | "nobody"
   >("contacts");
-  const [readReceiptsSetting, setReadReceiptsSetting] = useState(true);
+  const [readReceiptsSetting, setReadReceiptsSetting] = useState(true);    {*/ Read receipts are notifications that tell someone that their message has been read.*/}
   const [groupsSetting, setGroupsSetting] = useState<
     "everyone" | "contacts" | "nobody"
   >("contacts");
@@ -46,7 +46,7 @@ export function PrivacySettingsScreen({ onBack }: PrivacySettingsScreenProps) {
     { value: "nobody", label: "Nobody", icon: UserX },
   ];
 
-  const privacySettings = [
+  const privacySettings = [                          {*/ describes all privacy setting item*/}
     {
       icon: Clock,
       title: "Last Seen",
@@ -91,7 +91,7 @@ export function PrivacySettingsScreen({ onBack }: PrivacySettingsScreenProps) {
     },
   ];
 
-  const PrivacySettingRow = ({ setting }: { setting: any }) => {
+  const PrivacySettingRow = ({ setting }: { setting: any }) => {          {*/ update the settings.*/}
     const [showOptions, setShowOptions] = useState(false);
 
     return (
@@ -118,14 +118,14 @@ export function PrivacySettingsScreen({ onBack }: PrivacySettingsScreenProps) {
               <button
                 key={option.value}
                 onClick={() => {
-                  setting.onChange(option.value);
+                  setting.onChange(option.value);            {/* Tap an option → dropdown closes → setting updates instantly*/}
                   setShowOptions(false);
                 }}
                 className="w-full flex items-center gap-4 p-4 hover:bg-app-dark transition-colors"
               >
                 <option.icon className="w-5 h-5 text-app-gray" />
                 <span className="text-white">{option.label}</span>
-                {setting.value === option.value && (
+                {setting.value === option.value && (      {*/a tick option is displayed with that option that is currently active*/}
                   <CheckCircle className="w-5 h-5 text-app-teal ml-auto" />
                 )}
               </button>
